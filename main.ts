@@ -14,8 +14,6 @@ camera.lookAt(0, 0, 0);
 const renderer = new Renderer();
 
 const player = new Player();
-const tree = new Tree(0);
-tree.setPosition(20, 20, 20);
 
 const ambientLight = new THREE.AmbientLight();
 
@@ -27,8 +25,6 @@ const map = createMap();
 scene.add(ambientLight);
 scene.add(dirLight);
 scene.add(player.getMesh());
-scene.add(tree.getTrunkMesh());
-scene.add(tree.getLeavesMesh());
 scene.add(map);
 
 function animate() {

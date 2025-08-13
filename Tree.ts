@@ -1,30 +1,27 @@
 import * as THREE from 'three';
 
 export class Tree {
-	private trunkMesh: THREE.Mesh;
-	private leavesMesh: THREE.Mesh;
+	private tree: THREE.Group;
 
-	constructor(height: number) {
-		const trunkGeometry = new THREE.BoxGeometry(5, 5, 20);
+	constructor(trunkHeight: number = 20, leavesHeight: number = 45) {
+		const trunkGeometry = new THREE.BoxGeometry(10, 10, trunkHeight);
 		const trunkMaterial = new THREE.MeshLambertMaterial({ color: "brown", flatShading: true });
-		const leavesGeometry = new THREE.BoxGeometry(20, 20, 40);
-		const leavesMaterial = new THREE.MeshLambertMaterial({ color: "blue", flatShading: true });
-		this.trunkMesh = new THREE.Mesh(trunkGeometry, trunkMaterial);
-		this.leavesMesh = new THREE.Mesh(leavesGeometry, leavesMaterial);
-		this.trunkMesh.position.z = 10; // Set the Z position to be above the ground
-		this.leavesMesh.position.z = 50; // Set the Z position to be above the ground
+		const leavesGeometry = new THREE.BoxGeometry(20, 20, leavesHeight);
+		const leavesMaterial = new THREE.MeshLambertMaterial({ color: 0x224222, flatShading: true });
+		const trunkMesh = new THREE.Mesh(trunkGeometry, trunkMaterial);
+		const leavesMesh = new THREE.Mesh(leavesGeometry, leavesMaterial);
+		this.tree = new THREE.Group();
+		trunkMesh.position.z = trunkHeight / 2; // Set the Z position to be above the ground
+		leavesMesh.position.z = leavesHeight; // Set the Z position to be above the ground
+		this.tree.add(trunkMesh);
+		this.tree.add(leavesMesh);
 	}
 
-	public getTrunkMesh(): THREE.Mesh {
-		return this.trunkMesh;
-	}
-
-	public getLeavesMesh(): THREE.Mesh {
-		return this.leavesMesh;
+	public getTree(): THREE.Group {
+		return this.tree;
 	}
 
 	public setPosition(x: number, y: number, z: number): void {
-		this.trunkMesh.position.set(x, y, z);
-		// this.leavesMesh.position.set(x, y, z);
+		this.tree.position.set(x, y, z);
 	}
 }
