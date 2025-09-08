@@ -3,7 +3,6 @@ import * as THREE from 'three';
 import { Renderer } from './Renderer';
 import { Camera } from './Camera';
 import { Player } from './Player';
-import { Tree } from './Tree';
 import { createMap } from './Map';
 
 const scene: THREE.Scene = new THREE.Scene();

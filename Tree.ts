@@ -13,6 +13,7 @@ export class Tree {
 		this.tree = new THREE.Group();
 		trunkMesh.position.z = trunkHeight / 2; // Set the Z position to be above the ground
 		leavesMesh.position.z = leavesHeight; // Set the Z position to be above the ground
+		// TODO: if leavesHeight is more than twice trunkHeight then scale trunk up
 		this.tree.add(trunkMesh);
 		this.tree.add(leavesMesh);
 	}
