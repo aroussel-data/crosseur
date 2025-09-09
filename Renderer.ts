@@ -4,8 +4,14 @@ export class Renderer {
 	private renderer: THREE.WebGLRenderer;
 
 	constructor() {
-		this.renderer = new THREE.WebGLRenderer();
+		this.renderer = new THREE.WebGLRenderer(
+			{
+				antialias: true,
+				alpha: true,
+			}
+		);
 		this.renderer.setSize(window.innerWidth, window.innerHeight);
+		this.renderer.shadowMap.enabled = true;
 		document.body.appendChild(this.renderer.domElement);
 	}
 

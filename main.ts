@@ -3,6 +3,7 @@ import * as THREE from 'three';
 import { Renderer } from './Renderer';
 import { Camera } from './Camera';
 import { Player } from './Player';
+import { DirectionalLight } from './DirectionalLight';
 import { createMap } from './Map';
 
 const scene: THREE.Scene = new THREE.Scene();
@@ -16,13 +17,13 @@ const player = new Player();
 
 const ambientLight = new THREE.AmbientLight();
 
-const dirLight = new THREE.DirectionalLight();
-dirLight.position.set(-100, -100, 200);
+const dirLight = new DirectionalLight();
+dirLight.setPosition(-100, -100, 200);
 
 const map = createMap();
 
 scene.add(ambientLight);
-scene.add(dirLight);
+scene.add(dirLight.getLight());
 scene.add(player.getMesh());
 scene.add(map);
 

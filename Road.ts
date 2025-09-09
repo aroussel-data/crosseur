@@ -1,14 +1,13 @@
 import * as THREE from 'three';
 
-export class Player {
+export class Road {
 	private mesh: THREE.Mesh;
 
-	constructor() {
-		const geometry = new THREE.BoxGeometry(15, 15, 20);
-		const material = new THREE.MeshLambertMaterial({ color: "white", flatShading: true });
+	constructor(index: number) {
+		const geometry = new THREE.BoxGeometry(17 * 42, 42);
+		const material = new THREE.MeshLambertMaterial({ color: 0x303030 });
 		this.mesh = new THREE.Mesh(geometry, material);
-		this.mesh.position.z = 10; // Set the Z position to be above the ground
-		this.mesh.castShadow = true;
+		this.mesh.position.y = index * 42;
 		this.mesh.receiveShadow = true;
 	}
 
