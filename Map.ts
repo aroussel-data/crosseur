@@ -11,7 +11,7 @@ export function createMap(): THREE.Group {
   for (const mapData of MAP_METADATA) {
     if (mapData.type === "tree") {
       const tree = new Tree(mapData.trunkHeight, mapData.leavesHeight);
-      tree.setPosition(mapData.xIndex * 42 + 21, mapData.yIndex * 20, 0);
+      tree.setPosition(mapData.xIndex * 42, mapData.yIndex * 42, 0);
       map.add(tree.getTree());
     } else if (mapData.type === "grass") {
       const grassPatch = new Grass(mapData.yIndex);

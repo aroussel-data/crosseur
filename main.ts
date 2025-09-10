@@ -6,6 +6,7 @@ import { Player } from "./Player";
 import { DirectionalLight } from "./DirectionalLight";
 import { createMap } from "./Map";
 import { animateVehicles } from "./VehicleAnimation";
+import { animatePlayer } from "./PlayerAnimation";
 
 const scene: THREE.Scene = new THREE.Scene();
 const camera = new Camera();
@@ -15,6 +16,29 @@ camera.lookAt(0, 0, 0);
 const renderer = new Renderer();
 
 const player = new Player();
+
+window.addEventListener("keydown", (event) => {
+  switch (event.key) {
+    case "ArrowUp":
+      event.preventDefault();
+      player.enqueueMove("forward");
+      break;
+    case "ArrowLeft":
+      event.preventDefault();
+      player.enqueueMove("left");
+      break;
+    case "ArrowRight":
+      event.preventDefault();
+      player.enqueueMove("right");
+      break;
+    case "ArrowDown":
+      event.preventDefault();
+      player.enqueueMove("backward");
+      break;
+    default:
+      console.log(`Sorry, not a valid key.`);
+  }
+});
 
 const ambientLight = new THREE.AmbientLight();
 
@@ -33,5 +57,6 @@ renderer.setAnimationLoop(animate);
 
 function animate() {
   animateVehicles();
+  animatePlayer(player);
   renderer.render(scene, camera.getCamera());
 }
