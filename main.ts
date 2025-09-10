@@ -1,11 +1,11 @@
-import * as THREE from 'three';
+import * as THREE from "three";
 
-import { Renderer } from './Renderer';
-import { Camera } from './Camera';
-import { Player } from './Player';
-import { DirectionalLight } from './DirectionalLight';
-import { createMap } from './Map';
-import { animateVehicles } from './VehicleAnimation';
+import { Renderer } from "./Renderer";
+import { Camera } from "./Camera";
+import { Player } from "./Player";
+import { DirectionalLight } from "./DirectionalLight";
+import { createMap } from "./Map";
+import { animateVehicles } from "./VehicleAnimation";
 
 const scene: THREE.Scene = new THREE.Scene();
 const camera = new Camera();
@@ -32,6 +32,6 @@ renderer.render(scene, camera.getCamera());
 renderer.setAnimationLoop(animate);
 
 function animate() {
-	animateVehicles();
-	renderer.render(scene, camera.getCamera());
+  animateVehicles();
+  renderer.render(scene, camera.getCamera());
 }
