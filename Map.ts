@@ -19,16 +19,26 @@ export function createMap(): THREE.Group {
 			map.add(tree.getTree());
 		}
 		else if (mapData.type === 'grass') {
-			const grassPatch = new Grass(mapData.xIndex);
+			const grassPatch = new Grass(mapData.yIndex);
 			map.add(grassPatch.getMesh());
 		}
 		else if (mapData.type === 'road') {
-			const road = new Road(mapData.xIndex);
-			// TODO: place multiple vehicles in a lane
-			// car yIndex should be configurable
-			const car = new Car(mapData.xIndex, 0, "blue");
+			const road = new Road(mapData.yIndex);
+			for (const vehicle of mapData.vehicles) {
+				if (vehicle.type === 'car') {
+					const car = new Car(
+						mapData.yIndex,
+						vehicle.xIndex,
+						vehicle.color,
+						vehicle.rotated
+					);
+					vehicle.ref = car.getMesh();
+					map.add(car.getMesh());
+				} else {
+					throw new Error(`Unknown vehicle type: ${vehicle.type}`);
+				}
+			}
 			map.add(road.getMesh());
-			map.add(car.getMesh());
 		} else {
 			throw new Error(`Unknown map data type: ${mapData}`);
 		}

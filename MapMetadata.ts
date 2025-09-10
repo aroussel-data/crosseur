@@ -1,19 +1,22 @@
+import * as THREE from 'three';
+
 interface GrassData {
 	type: "grass";
-	xIndex: number;
+	yIndex: number;
 }
 
 interface RoadData {
 	type: "road";
-	xIndex: number;
+	yIndex: number;
+	vehicles: { type: "car" | "truck"; xIndex: number; color: string; rotated: boolean, ref: null | THREE.Group }[];
 }
 
 interface TreeData {
 	type: "tree";
 	trunkHeight: number;
 	leavesHeight: number;
-	xIndex: number;
 	yIndex: number;
+	xIndex: number;
 }
 
 type MapMetadata = GrassData | TreeData | RoadData;
@@ -21,36 +24,50 @@ type MapMetadata = GrassData | TreeData | RoadData;
 export const MAP_METADATA: MapMetadata[] = [
 	// Grass
 	{
-		type: "grass", xIndex: 0,
+		type: "grass", yIndex: -3,
 	},
 	{
-		type: "grass", xIndex: 1,
+		type: "grass", yIndex: -2,
 	},
 	{
-		type: "grass", xIndex: 2,
+		type: "grass", yIndex: -1,
+	},
+	{
+		type: "grass", yIndex: 0,
+	},
+	{
+		type: "grass", yIndex: 1,
+	},
+	{
+		type: "grass", yIndex: 2,
 	},
 	// {
-	// 	type: "grass", xIndex: 3,
+	// 	type: "grass", yIndex: 3,
 	// },
 	{
-		type: "grass", xIndex: 4,
+		type: "grass", yIndex: 4,
 	},
 	{
-		type: "grass", xIndex: 5,
+		type: "grass", yIndex: 5,
 	},
 	// {
-	// 	type: "grass", xIndex: 6,
+	// 	type: "grass", yIndex: 6,
 	// },
 	{
-		type: "grass", xIndex: 7,
+		type: "grass", yIndex: 7,
 	},
 	// Roads
-	// TODO: roads should have array of vehicles
 	{
-		type: "road", xIndex: 3,
+		type: "road", yIndex: 3, vehicles: [
+			{ type: "car", xIndex: 5, color: "blue", rotated: true, ref: null },
+			{ type: "car", xIndex: -5, color: "red", rotated: true, ref: null },
+		],
 	},
 	{
-		type: "road", xIndex: 6,
+		type: "road", yIndex: 6, vehicles: [
+			{ type: "car", xIndex: 7, color: "yellow", rotated: false, ref: null },
+			{ type: "car", xIndex: -2, color: "green", rotated: false, ref: null }
+		]
 	},
 	// Trees
 	{

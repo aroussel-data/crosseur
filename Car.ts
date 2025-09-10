@@ -3,10 +3,10 @@ import * as THREE from 'three';
 export class Car {
 	private car: THREE.Group;
 
-	constructor(xIndex: number, yIndex: number = 0, color: string, rotated: boolean = false) {
+	constructor(yIndex: number, xIndex: number = 0, color: string, rotated: boolean = false) {
 		this.car = new THREE.Group();
-		this.car.position.y = xIndex * 42;
-		this.car.position.x = yIndex * 20;
+		this.car.position.y = yIndex * 42;
+		this.car.position.x = xIndex * 20;
 		if (rotated) { this.car.rotation.z = Math.PI };
 
 		const body = new THREE.Mesh(
