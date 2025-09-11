@@ -10,8 +10,8 @@ export function animatePlayer(player: Player) {
   const stepTime = 0.2; // seconds
   const progress = Math.min(moveClock.getElapsedTime() / stepTime, 1);
 
-  // TODO: add setPosition and setRotation functions
   player.setPosition(progress);
+  // TODO: add setRotation function if needed
 
   if (progress >= 1) {
     player.stepCompleted();

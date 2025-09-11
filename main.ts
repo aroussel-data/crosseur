@@ -12,10 +12,13 @@ const scene: THREE.Scene = new THREE.Scene();
 const camera = new Camera();
 camera.setPosition(300, -300, 300);
 camera.lookAt(0, 0, 0);
+scene.add(camera.getCamera());
 
 const renderer = new Renderer();
 
 const player = new Player();
+// player.getMesh().add(camera.getCamera());
+player.cameraContainer.add(camera.getCamera());
 
 window.addEventListener("keydown", (event) => {
   switch (event.key) {
@@ -49,7 +52,8 @@ const map = createMap();
 
 scene.add(ambientLight);
 scene.add(dirLight.getLight());
-scene.add(player.getMesh());
+// scene.add(player.getMesh());
+scene.add(player.cameraContainer);
 scene.add(map);
 
 renderer.render(scene, camera.getCamera());
