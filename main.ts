@@ -17,7 +17,6 @@ scene.add(camera.getCamera());
 const renderer = new Renderer();
 
 const player = new Player();
-// player.getMesh().add(camera.getCamera());
 player.cameraContainer.add(camera.getCamera());
 
 window.addEventListener("keydown", (event) => {
@@ -46,13 +45,12 @@ window.addEventListener("keydown", (event) => {
 const ambientLight = new THREE.AmbientLight();
 
 const dirLight = new DirectionalLight();
-dirLight.setPosition(-100, -100, 200);
+dirLight.getLight().target = player.cameraContainer;
+player.cameraContainer.add(dirLight.getLight());
 
 const map = createMap();
 
 scene.add(ambientLight);
-scene.add(dirLight.getLight());
-// scene.add(player.getMesh());
 scene.add(player.cameraContainer);
 scene.add(map);
 
