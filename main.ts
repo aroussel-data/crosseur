@@ -7,6 +7,7 @@ import { DirectionalLight } from "./DirectionalLight";
 import { createMap } from "./Map";
 import { animateVehicles } from "./VehicleAnimation";
 import { animatePlayer } from "./PlayerAnimation";
+import { detectCollisions } from "./CollisionDetection";
 
 const scene: THREE.Scene = new THREE.Scene();
 const camera = new Camera();
@@ -60,5 +61,6 @@ renderer.setAnimationLoop(animate);
 function animate() {
   animateVehicles();
   animatePlayer(player);
+  detectCollisions(player);
   renderer.render(scene, camera.getCamera());
 }

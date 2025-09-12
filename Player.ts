@@ -2,10 +2,9 @@ import * as THREE from "three";
 import { MAP_METADATA } from "./MapMetadata";
 
 export class Player {
-  // private mesh: THREE.Mesh;
   player: THREE.Group;
   cameraContainer: THREE.Group;
-  private position: {
+  position: {
     xAxis: number;
     yAxis: number;
   } = { xAxis: 0, yAxis: 0 };
@@ -19,10 +18,6 @@ export class Player {
       color: "white",
       flatShading: true,
     });
-    // this.mesh = new THREE.Mesh(geometry, material);
-    // this.mesh.position.z = 10; // Set the Z position to be above the ground
-    // this.mesh.castShadow = true;
-    // this.mesh.receiveShadow = true;
     const mesh = new THREE.Mesh(geometry, material);
     mesh.position.z = 10; // Set the Z position to be above the ground
     mesh.castShadow = true;
@@ -46,10 +41,6 @@ export class Player {
     this.cameraContainer.add(this.player);
   }
 
-  // public getMesh(): THREE.Mesh {
-  //   return this.mesh;
-  // }
-
   public setPosition(progress: number): void {
     const startX = this.position.xAxis * 42; // 20 instead?
     const startY = this.position.yAxis * 42;
@@ -61,7 +52,6 @@ export class Player {
     if (this.movesQueue[0] == "right") endX += 42;
     if (this.movesQueue[0] == "left") endX -= 42;
 
-    // const mesh = this.getMesh();
     const mesh = this.cameraContainer;
     mesh.position.x = THREE.MathUtils.lerp(startX, endX, progress);
     mesh.position.y = THREE.MathUtils.lerp(startY, endY, progress);

@@ -5,7 +5,7 @@ interface GrassData {
   yIndex: number;
 }
 
-interface RoadData {
+export interface RoadData {
   type: "road";
   yIndex: number;
   vehicles: {
@@ -53,9 +53,6 @@ export const MAP_METADATA: MapMetadata[] = [
     type: "grass",
     yIndex: 2,
   },
-  // {
-  // 	type: "grass", yIndex: 3,
-  // },
   {
     type: "grass",
     yIndex: 4,
@@ -64,9 +61,6 @@ export const MAP_METADATA: MapMetadata[] = [
     type: "grass",
     yIndex: 5,
   },
-  // {
-  // 	type: "grass", yIndex: 6,
-  // },
   {
     type: "grass",
     yIndex: 7,
@@ -75,6 +69,7 @@ export const MAP_METADATA: MapMetadata[] = [
   {
     type: "road",
     yIndex: 3,
+    // TODO: Add trucks
     vehicles: [
       { type: "car", xIndex: 5, color: "blue", rotated: true, ref: null },
       { type: "car", xIndex: -5, color: "red", rotated: true, ref: null },
