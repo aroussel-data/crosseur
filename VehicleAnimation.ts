@@ -14,12 +14,12 @@ export function animateVehicles() {
             vehicle.ref.position.x =
               vehicle.ref.position.x < -8 * 42
                 ? 8 * 42
-                : vehicle.ref.position.x - 40 * delta;
+                : vehicle.ref.position.x - 150 * delta; // TODO: make 150 speed configurable per vehicle lane
           } else {
             vehicle.ref.position.x =
               vehicle.ref.position.x > 8 * 42
                 ? -8 * 42
-                : vehicle.ref.position.x + 40 * delta;
+                : vehicle.ref.position.x + 150 * delta;
           }
         }
       }
