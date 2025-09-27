@@ -4,7 +4,7 @@ import { Renderer } from "./rendering/Renderer";
 import { Camera } from "./rendering/Camera";
 import { Player } from "./objects/Player";
 import { DirectionalLight } from "./rendering/DirectionalLight";
-import { createMap } from "./objects/environment/Map";
+import createMap from "./objects/environment";
 import { animateVehicles } from "./animation/VehicleAnimation";
 import { animatePlayer } from "./animation/PlayerAnimation";
 import { detectCollisions } from "./animation/CollisionDetection";

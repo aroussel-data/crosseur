@@ -3,14 +3,15 @@ import * as THREE from "three";
 import { Grass } from "./Grass";
 import { Tree } from "./Tree";
 import { Road } from "./Road";
-import { Car } from "../vehicles/Car";
+import Car from "../vehicles/car";
 import { MAP_METADATA } from "./MapMetadata";
 
-export function createMap(): THREE.Group {
+export default function createMap(): THREE.Group {
   const map = new THREE.Group();
   for (const mapData of MAP_METADATA) {
     if (mapData.type === "tree") {
       const tree = new Tree(mapData.trunkHeight, mapData.leavesHeight);
+      // TODO: 42 should be a constant for tile size
       tree.setPosition(mapData.xIndex * 42, mapData.yIndex * 42, 0);
       map.add(tree.getTree());
     } else if (mapData.type === "grass") {
@@ -26,8 +27,8 @@ export function createMap(): THREE.Group {
             vehicle.color,
             vehicle.rotated,
           );
-          vehicle.ref = car.getMesh();
-          map.add(car.getMesh());
+          vehicle.ref = car.group;
+          map.add(car.group);
         } else {
           throw new Error(`Unknown vehicle type: ${vehicle.type}`);
         }
