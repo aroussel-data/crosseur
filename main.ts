@@ -1,13 +1,13 @@
 import * as THREE from "three";
 
-import { Renderer } from "./Renderer";
-import { Camera } from "./Camera";
-import { Player } from "./Player";
-import { DirectionalLight } from "./DirectionalLight";
-import { createMap } from "./Map";
-import { animateVehicles } from "./VehicleAnimation";
-import { animatePlayer } from "./PlayerAnimation";
-import { detectCollisions } from "./CollisionDetection";
+import { Renderer } from "./rendering/Renderer";
+import { Camera } from "./rendering/Camera";
+import { Player } from "./objects/Player";
+import { DirectionalLight } from "./rendering/DirectionalLight";
+import { createMap } from "./objects/environment/Map";
+import { animateVehicles } from "./animation/VehicleAnimation";
+import { animatePlayer } from "./animation/PlayerAnimation";
+import { detectCollisions } from "./animation/CollisionDetection";
 
 const scene: THREE.Scene = new THREE.Scene();
 const camera = new Camera();

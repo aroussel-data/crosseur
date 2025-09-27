@@ -3,7 +3,7 @@ import * as THREE from "three";
 import { Grass } from "./Grass";
 import { Tree } from "./Tree";
 import { Road } from "./Road";
-import { Car } from "./Car";
+import { Car } from "../vehicles/Car";
 import { MAP_METADATA } from "./MapMetadata";
 
 export function createMap(): THREE.Group {

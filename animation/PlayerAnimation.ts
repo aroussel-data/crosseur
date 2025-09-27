@@ -1,5 +1,5 @@
 import * as THREE from "three";
-import { Player } from "./Player";
+import { Player } from "../objects/Player";
 
 const moveClock = new THREE.Clock();
 

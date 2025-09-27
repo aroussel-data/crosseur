@@ -1,5 +1,5 @@
 import * as THREE from "three";
-import { MAP_METADATA } from "./MapMetadata";
+import { MAP_METADATA } from "../objects/environment/MapMetadata";
 
 export class Player {
   player: THREE.Group;

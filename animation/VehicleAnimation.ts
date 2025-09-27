@@ -1,6 +1,6 @@
 import * as THREE from "three";
 
-import { MAP_METADATA } from "./MapMetadata";
+import { MAP_METADATA } from "../objects/environment/MapMetadata";
 
 const clock = new THREE.Clock();
 
