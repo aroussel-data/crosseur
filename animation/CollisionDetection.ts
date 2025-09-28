@@ -1,6 +1,6 @@
 import * as THREE from "three";
-import { Player } from "../objects/Player";
-import { MAP_METADATA, RoadData } from "../objects/environment/MapMetadata";
+import { Player } from "@objects/Player";
+import { MAP_METADATA, RoadData } from "@objects/environment/MapMetadata";
 
 export function detectCollisions(player: Player): void {
   const collidableRoad = MAP_METADATA.filter((m) => {

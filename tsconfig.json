@@ -14,7 +14,21 @@
     "isolatedModules": true,
     "checkJs": true,
     "esModuleInterop": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "types": [
+      "node"
+    ],
+    "paths": {
+      "@rendering/*": [
+        "./rendering/*"
+      ],
+      "@objects/*": [
+        "./objects/*"
+      ],
+      "@animation/*": [
+        "./animation/*"
+      ]
+    },
   },
   "$schema": "https://json.schemastore.org/tsconfig",
   "display": "Strictest",
