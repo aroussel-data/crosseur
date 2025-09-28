@@ -5,14 +5,18 @@ import { Tree } from "./Tree";
 import { Road } from "./Road";
 import Car from "@objects/vehicles/car";
 import { MAP_METADATA } from "./MapMetadata";
+import { TILE_SIZE } from "@/constants";
 
 export default function createMap(): THREE.Group {
   const map = new THREE.Group();
   for (const mapData of MAP_METADATA) {
     if (mapData.type === "tree") {
       const tree = new Tree(mapData.trunkHeight, mapData.leavesHeight);
-      // TODO: 42 should be a constant for tile size
-      tree.setPosition(mapData.xIndex * 42, mapData.yIndex * 42, 0);
+      tree.setPosition(
+        mapData.xIndex * TILE_SIZE,
+        mapData.yIndex * TILE_SIZE,
+        0,
+      );
       map.add(tree.getTree());
     } else if (mapData.type === "grass") {
       const grassPatch = new Grass(mapData.yIndex);

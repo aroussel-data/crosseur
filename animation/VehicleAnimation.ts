@@ -1,6 +1,12 @@
 import * as THREE from "three";
 
 import { MAP_METADATA } from "@objects/environment/MapMetadata";
+import {
+  DEFAULT_VEHICLE_SPEED,
+  MAX_XAXIS_INDEX,
+  MIN_XAXIS_INDEX,
+  TILE_SIZE,
+} from "@/constants";
 
 const clock = new THREE.Clock();
 
@@ -12,14 +18,14 @@ export function animateVehicles() {
         if (vehicle.type === "car" && vehicle.ref) {
           if (vehicle.rotated) {
             vehicle.ref.position.x =
-              vehicle.ref.position.x < -8 * 42
-                ? 8 * 42
-                : vehicle.ref.position.x - 150 * delta; // TODO: make 150 speed configurable per vehicle lane
+              vehicle.ref.position.x < MIN_XAXIS_INDEX * TILE_SIZE
+                ? MAX_XAXIS_INDEX * TILE_SIZE
+                : vehicle.ref.position.x - DEFAULT_VEHICLE_SPEED * delta; // TODO: make 150 speed configurable per vehicle lane
           } else {
             vehicle.ref.position.x =
-              vehicle.ref.position.x > 8 * 42
-                ? -8 * 42
-                : vehicle.ref.position.x + 150 * delta;
+              vehicle.ref.position.x > MAX_XAXIS_INDEX * TILE_SIZE
+                ? MIN_XAXIS_INDEX * TILE_SIZE
+                : vehicle.ref.position.x + DEFAULT_VEHICLE_SPEED * delta;
           }
         }
       }

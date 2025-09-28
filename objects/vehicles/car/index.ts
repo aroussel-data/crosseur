@@ -2,6 +2,7 @@ import * as THREE from "three";
 import { Wheel } from "./Wheel";
 import { Cabin } from "./Cabin";
 import { Body } from "./Body";
+import { TILE_SIZE } from "@/constants";
 
 export default class {
   readonly group: THREE.Group;
@@ -13,7 +14,7 @@ export default class {
     rotated: boolean = false,
   ) {
     this.group = new THREE.Group();
-    this.group.position.y = yIndex * 42;
+    this.group.position.y = yIndex * TILE_SIZE;
     this.group.position.x = xIndex * 20;
     if (rotated) {
       this.group.rotation.z = Math.PI;

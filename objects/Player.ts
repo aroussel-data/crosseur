@@ -1,5 +1,6 @@
 import * as THREE from "three";
 import { MAP_METADATA } from "@objects/environment/MapMetadata";
+import { TILE_SIZE } from "@/constants";
 
 export class Player {
   player: THREE.Group;
@@ -42,15 +43,15 @@ export class Player {
   }
 
   public setPosition(progress: number): void {
-    const startX = this.position.xAxis * 42; // 20 instead?
-    const startY = this.position.yAxis * 42;
+    const startX = this.position.xAxis * TILE_SIZE;
+    const startY = this.position.yAxis * TILE_SIZE;
     let endX = startX;
     let endY = startY;
 
-    if (this.movesQueue[0] == "forward") endY += 42;
-    if (this.movesQueue[0] == "backward") endY -= 42;
-    if (this.movesQueue[0] == "right") endX += 42;
-    if (this.movesQueue[0] == "left") endX -= 42;
+    if (this.movesQueue[0] == "forward") endY += TILE_SIZE;
+    if (this.movesQueue[0] == "backward") endY -= TILE_SIZE;
+    if (this.movesQueue[0] == "right") endX += TILE_SIZE;
+    if (this.movesQueue[0] == "left") endX -= TILE_SIZE;
 
     const mesh = this.cameraContainer;
     mesh.position.x = THREE.MathUtils.lerp(startX, endX, progress);
