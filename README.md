@@ -1,1 +1,3 @@
 # crosseur
+
+> npx vite
